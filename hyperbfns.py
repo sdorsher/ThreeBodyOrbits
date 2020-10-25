@@ -1,7 +1,7 @@
 import numpy as np
 
 def getelltheory(theta0,ecc0,rad0):
-    ell=rad0*(ecc0+1.)
+    ell=rad0*(ecc0**2-1.)
     return ell
 
 def getrtheory(theta0,ecc0,rad0,t):

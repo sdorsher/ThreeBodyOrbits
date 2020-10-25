@@ -117,11 +117,9 @@ def getxyuveqtwohyperbolas(initdat,isper):
         az0=np.zeros(2)
     elif eccentricity > 1.:
         #elliptical
-        orbitalr=orbitalradius #NO REDUCED MASS
-        coordsep=orbitalr #start at aphelion
+        orbitalr=orbitalradius #NO REDUCED MASS  (semimajor axis)
+        coordsep=orbitalr*(eccentricity-1.) #start at perihelion
         isper=True
-        if isper:
-            coordsep=orbitalr
         x0=(coordsep)*cosphi
         y0=(coordsep)*sinphi
         starsep=np.sqrt((x0[0]-x0[1])**2+(y0[0]-y0[1])**2) #two stars, at opposite ends of the orbit
@@ -130,9 +128,10 @@ def getxyuveqtwohyperbolas(initdat,isper):
         v=np.zeros(2)
         #v= np.sqrt(masses[1]*masses[0]/masses*(2./starsep-1./(2*orbitalr)))
         #isper:
-        vapsq=masses[1]*masses[0]/masses/orbitalr*eccentricity/2. #originally e/2.
+        #vapsq=masses[1]*masses[0]/masses/orbitalr*eccentricity/2. #originally e/2.
+        vapsq=masses[1]*masses[0]/masses/orbitalr*(eccentricity)/(eccentricity-1.)/2. #originally e/2.
         #vapsq=masses[1]*masses[0]/masses*(1./(coordsep)-1./orbitalr)/2.
-        v=np.sqrt(vapsq)
+        v=np.sqrt(np.abs(vapsq))
         #v= np.sqrt(masses[1]*masses[0]/masses*(1./orbitalr-2./starsep))
         ux0=-v*sinphi
         uy0=v*cosphi #initial data in y only 
