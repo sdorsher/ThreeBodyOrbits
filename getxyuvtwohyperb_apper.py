@@ -126,13 +126,9 @@ def getxyuveqtwohyperbolas(initdat,isper):
         Fapastron=masses[1]*masses[0]/starsep**2
 
         v=np.zeros(2)
-        #v= np.sqrt(masses[1]*masses[0]/masses*(2./starsep-1./(2*orbitalr)))
         #isper:
-        #vapsq=masses[1]*masses[0]/masses/orbitalr*eccentricity/2. #originally e/2.
-        vapsq=masses[1]*masses[0]/masses/orbitalr*(eccentricity)/(eccentricity-1.)/2. #originally e/2.
-        #vapsq=masses[1]*masses[0]/masses*(1./(coordsep)-1./orbitalr)/2.
+        vapsq=masses[1]*masses[0]/masses/orbitalr*(eccentricity+1.)/(eccentricity-1.)/4. #originally e/2.
         v=np.sqrt(np.abs(vapsq))
-        #v= np.sqrt(masses[1]*masses[0]/masses*(1./orbitalr-2./starsep))
         ux0=-v*sinphi
         uy0=v*cosphi #initial data in y only 
         uz0=np.zeros(2)
