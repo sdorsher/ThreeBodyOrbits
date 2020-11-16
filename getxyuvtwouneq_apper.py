@@ -165,8 +165,11 @@ def getxyuvequneq(initdat,isper):
         x0[1]=semimajor1*cosphi[1]
         y0[0]=semimajor0*sinphi[0]
         y0[1]=semimajor1*sinphi[1]
-        vp0sq=(masses[0]+masses[1])*masses[0]/masses[1]/orbitalradius
-        vp1sq=(masses[0]+masses[1])*masses[1]/masses[0]/orbitalradius
+        #vp0sq=(masses[0]+masses[1])*masses[0]/masses[1]/orbitalradius
+        #vp1sq=(masses[0]+masses[1])*masses[1]/masses[0]/orbitalradius
+        vp0sq=masses[1]**2/(masses[0]+masses[1])/orbitalradius
+        vp1sq=masses[0]**2/(masses[0]+masses[1])/orbitalradius
+        #might be m1m2/(m1+m2)/orbitalr
         v[0]=np.sqrt(vp0sq)
         v[1]=np.sqrt(vp1sq)
 
