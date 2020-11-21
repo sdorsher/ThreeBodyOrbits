@@ -90,23 +90,29 @@ def getxyuvequneq(initdat,isper):
     elif eccentricity<1 and eccentricity>0:
         print("ellipse")
         #elliptical
-        orbitalr=orbitalradius #NO REDUCED MASS
-        coordsep=orbitalr*(1+eccentricity) #start at aphelion
+        semimajorarr=np.zeros(2)
+        semimajorarr[0]=orbitalradius*masses[1]/(masses[1]+masses[0])
+        semimajorarr[1]=orbitalradius*masses[0]/(masses[1]+masses[0])
+        coordsep=orbitalradius*(1+eccentricity) #start at aphelion
+        orbitalrarr=semimajorarr*(1+eccentricity)
         if isper:
-            coordsep=orbitalr*(1-eccentricity)
-        x0=(coordsep)*cosphi
-        y0=(coordsep)*sinphi
+            orbitalrarr=semimajorarr*(1-eccentricity)
+            coordsep=orbitalradius*(1-eccentricity)
+        x0=(orbitalrarr)*cosphi
+        y0=(orbitalrarr)*sinphi
         starsep=np.sqrt((x0[0]-x0[1])**2+(y0[0]-y0[1])**2) #two stars, at opposite ends of the orbit
         Fapastron=masses[1]*masses[0]/starsep**2
 
         v=np.zeros(2)
-        #v= np.sqrt(masses[1]*masses[0]/masses*(2./starsep-1./(2*orbitalr)))
-        vapsq=masses[1]*masses[0]/masses/orbitalr*(1-eccentricity)/(1+eccentricity)/4.
+        vapsq=np.zeros(2)
+        #vapsq=masses[1]*masses[0]/masses/orbitalr*(1-eccentricity)/(1+eccentricity)/4.
+        vapsq[0]=masses[1]**2/(masses[0]+masses[1])*(1-eccentricity)/orbitalradius/(1+eccentricity)
+        vapsq[1]=masses[0]**2/(masses[0]+masses[1])*(1-eccentricity)/orbitalradius/(1+eccentricity)
         if isper:
-            vapsq=masses[1]*masses[0]/masses/orbitalr*(1+eccentricity)/(1-eccentricity)/4.
-        #vapsq=masses[1]*masses[0]/masses*(1./(coordsep)-1./orbitalr)/2.
+            #vapsq=masses[1]*masses[0]/masses/orbitalr*(1+eccentricity)/(1-eccentricity)/4.
+            vapsq[0]=masses[1]**2/(masses[0]+masses[1])*(1+eccentricity)/orbitalradius/(1-eccentricity)
+            vapsq[1]=masses[0]**2/(masses[0]+masses[1])*(1+eccentricity)/orbitalradius/(1-eccentricity)
         v=np.sqrt(vapsq)
-        #v= np.sqrt(masses[1]*masses[0]/masses*(1./orbitalr-2./starsep))
         ux0=-v*sinphi
         uy0=v*cosphi #initial data in y only 
         uz0=np.zeros(2)
