@@ -60,23 +60,29 @@ def getxyuvequneq(initdat,isper):
         #parabola
         print("parabola")
         orbitalr=orbitalradius #NO REDUCED MASS
-        coordsep=2*orbitalr #start at aphelion
+        rperarr=np.zeros(2)
+        rperarr[0]=orbitalradius*masses[1]/(masses[1]+masses[0])
+        rperarr[1]=orbitalradius*masses[0]/(masses[1]+masses[0])
+        coordsep=orbitalr #start at aphelion
         isper=True
         if isper:
             coordsep=orbitalr
-        x0=(coordsep)*cosphi
-        y0=(coordsep)*sinphi
+        x0=(rperarr)*cosphi
+        y0=(rperarr)*sinphi
         starsep=np.sqrt((x0[0]-x0[1])**2+(y0[0]-y0[1])**2) #two stars, at opposite ends of the orbit
         Fapastron=masses[1]*masses[0]/starsep**2
 
         v=np.zeros(2)
-        #v= np.sqrt(masses[1]*masses[0]/masses*(2./starsep-1./(2*orbitalr)))
-        vapsq=masses[1]*masses[0]/masses/orbitalr/2.
+        vapsq=np.zeros(2)
+        vapsq[0]=2*masses[1]**2/orbitalr/(masses[1]+masses[0])
+        vapsq[1]=2*masses[0]**2/orbitalr/(masses[1]+masses[0])
+        
+        #vapsq=masses[1]*masses[0]/masses/orbitalr/2.
         if isper:
-            vapsq=masses[1]*masses[0]/masses/orbitalr/2.
-        #vapsq=masses[1]*masses[0]/masses*(1./(coordsep)-1./orbitalr)/2.
+            vapsq[0]=2*masses[1]**2/orbitalr/(masses[1]+masses[0])
+            vapsq[1]=2*masses[0]**2/orbitalr/(masses[1]+masses[0])
+            #vapsq=masses[1]*masses[0]/masses/orbitalr/2.
         v=np.sqrt(vapsq)
-        #v= np.sqrt(masses[1]*masses[0]/masses*(1./orbitalr-2./starsep))
         ux0=-v*sinphi
         uy0=v*cosphi #initial data in y only 
         uz0=np.zeros(2)
