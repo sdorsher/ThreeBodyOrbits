@@ -132,17 +132,31 @@ def getxyuvequneq(initdat,isper):
     elif eccentricity > 1.:
         print("hyperbola")
         #hyperbola
-        orbitalr=orbitalradius #NO REDUCED MASS  (semimajor axis)
-        coordsep=orbitalr*(eccentricity-1.) #start at perihelion
-        isper=True
-        x0=(coordsep)*cosphi
-        y0=(coordsep)*sinphi
+        semimajorarr=np.zeros(2)
+        semimajorarr[0]=orbitalradius*masses[1]/(masses[1]+masses[0])
+        semimajorarr[1]=orbitalradius*masses[0]/(masses[1]+masses[0])
+        isper = True
+        coordsep = orbitalradius*(-1+eccentricity)
+        orbitalrarr=semimajorarr*(-1+eccentricity)
+        if isper:
+            orbitalrarr=semimajorarr*(-1+eccentricity)
+            coordsep=orbitalradius*(-1+eccentricity)
+        x0=(orbitalrarr)*cosphi
+        y0=(orbitalrarr)*sinphi
+        #orbitalr=orbitalradius #NO REDUCED MASS  (semimajor axis)
+        #coordsep=orbitalr*(eccentricity-1.) #start at perihelion
+        #isper=True
+        #x0=(coordsep)*cosphi
+        #y0=(coordsep)*sinphi
         starsep=np.sqrt((x0[0]-x0[1])**2+(y0[0]-y0[1])**2) #two stars, at opposite ends of the orbit
         Fapastron=masses[1]*masses[0]/starsep**2
 
         v=np.zeros(2)
         #isper:
-        vapsq=masses[1]*masses[0]/masses/orbitalr*(eccentricity+1.)/(eccentricity-1.)/4. #originally e/2.
+        #vapsq=masses[1]*masses[0]/masses/orbitalr*(eccentricity+1.)/(eccentricity-1.)/4. #originally e/2.
+        vapsq=np.zeros(2)
+        vapsq[0]=(eccentricity+1)/orbitalradius/(eccentricity-1.)*masses[1]**2/(masses[1]+masses[0])
+        vapsq[1]=(eccentricity+1)/orbitalradius/(eccentricity-1.)*masses[0]**2/(masses[1]+masses[0])
         v=np.sqrt(np.abs(vapsq))
         ux0=-v*sinphi
         uy0=v*cosphi #initial data in y only 
