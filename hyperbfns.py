@@ -12,10 +12,10 @@ def getrtheory(theta0,ecc0,rad0,t):
 
 def getxtheory(theta0,ecc0,rad0,t,sgn):
     r=getrtheory(theta0,ecc0,rad0,t)
-    x=sgn*(np.cos(t)*r)
+    x=sgn*(np.cos(t+theta0)*r)
     return x
 
 def getytheory(theta0,ecc0,rad0,t,sgn):
     r=getrtheory(theta0,ecc0,rad0,t)
-    y=sgn*np.sin(t)*r
+    y=sgn*np.sin(t+theta0)*r
     return y
