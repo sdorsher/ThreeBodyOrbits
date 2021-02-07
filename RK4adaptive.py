@@ -10,11 +10,11 @@ def RK4adaptive(h,dtmax,dtmin,t,xvec,f,delta):
     diffxsq=diffxxvals**2
     sumsq=np.sum(diffxsq)
     magdiff=np.sqrt(sumsq)
-    print(h)
-    print(diffxxvals)
-    print(diffxsq)
-    print(sumsq)
-    print(magdiff)
+    #print(h)
+    #print(diffxxvals)
+    #print(diffxsq)
+    #print(sumsq)
+    #print(magdiff)
     rho=30*delta/magdiff #30*h*delta/magdiff
     repeat=False
     hnew=h
@@ -23,10 +23,10 @@ def RK4adaptive(h,dtmax,dtmin,t,xvec,f,delta):
         repeat=False
     elif np.abs(rho)>1:
         repeat=False
-        print(rho, "False")
+        #print(rho, "False")
     elif np.abs(rho)<1:
         repeat=True
-        print(rho, "True")
+        #print(rho, "True")
 
     hnew*=rho**.25
     if hnew<dtmin+epsilon:
