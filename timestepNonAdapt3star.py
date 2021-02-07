@@ -44,6 +44,6 @@ def timestepNonAdapt3star(numsteps,dt,xyuvaeqellipse,outputevery):
     npstar2a=np.array(star2a)
     npstar1a=np.array(star1a)
     npstar3a=np.array(star3a)
-    
-    return nptimes, npstar1x, npstar2x,npstar3x, npstar1a, npstar2a,npstar3a
+    nptimes=np.array(times)
+    return nptimes,npstar1x, npstar2x,npstar3x, npstar1a, npstar2a,npstar3a
 
