@@ -30,6 +30,13 @@ Two Stars One Planet.ipynb
 
 has a nice plot of the three body orbit, where the center two stars spiral about the slighly offset center of mass and the outer planet travels roughly in an ellipse but seems to spiral somewhat
 
+So what else is here?
+
+I began by writing the code simplistically with just two stars and no generalization using the most basic RK4. I tested circles, unequal masses, ellipses, hyperbolas. I checked the numerical convergence of my code. I explored recovery of initial parameters (a couple percent) using fits to the ellipse. I confirmed symmetry and minima and maxima. These routines seem to work but unfortunately I left many of the parameters set oddly when I moved on. 
+
+I added generalizations to many bodies in the integration (vector) or 3 bodies in the analysis. I added an adaptive RK4 which I discarded because it was more helpful to be able to do convergence analyses. 
+
+I added initial conditions for a three body orbit with a planet distantly located from an equal mass binary star on a quasi-circular orbit. I did not try to account for the planets effect on the center of mass. The orbit evolved as described above. Linear momentum was conserved. 
 
 If I were to continue to improve upon this I would:
 
