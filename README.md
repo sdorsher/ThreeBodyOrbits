@@ -36,7 +36,7 @@ I began by writing the code simplistically with just two stars and no generaliza
 
 I added generalizations to many bodies in the integration (vector) or 3 bodies in the analysis. I added an adaptive RK4 which I discarded because it was more helpful to be able to do convergence analyses. 
 
-I added initial conditions for a three body orbit with a planet distantly located from an equal mass binary star on a quasi-circular orbit. I did not try to account for the planets effect on the center of mass. The orbit evolved as described above. Linear momentum was conserved. 
+I added initial conditions for a three body orbit with a planet distantly located from an equal mass binary star on a quasi-circular orbit. I did not try to account for the planets effect on the center of mass. The orbit evolved as described above. Linear momentum was conserved. There was a nonzero change in angular momentum that appeared to have been an artifact of the simulation since the change in angular momentum at any given time (not step, I really do mean coordinate time in the simulation), was less if the step size was less. In the end, there was an oscillation in the total Kinetic and Potential energy posessed by the planet relative to the binary as seen over one orbit, and that did not appear to be an artifact of the simulation. 
 
 If I were to continue to improve upon this I would:
 
