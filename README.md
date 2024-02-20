@@ -5,7 +5,23 @@ EsplitEL vs t convergence plot.ipynb
 
 which demonstrates that energy is transferred between the outer planet and the inner binary and back again, and that this is not an artifact of the error introduced by the numerical integration scheme, since neither the behavior nor the amplitude of the energy transfer depends on step size of the numerical integration
 
-Data is fed to this analysis routine by a previous piece of code
+Data is fed to this analysis routine by a previous piece of code, 
+
+TwoStarsOnePlanet_convergenceTest-ELpvst.ipynb
+
+
+which also contains some analysis. It is important to use the version with the "p" for momentum because I caught an error between the 
+
+TwoStarsOnePlanet_Esplit.ipynb with
+TwoStarsOnePlanet_convergence.ipynb data
+
+and the more recent correct version
+
+However, if you would like to see my thought process with some ultimately inaccurate results, it displays nicely in the 
+
+TwoStarsOnePlanet_Esplit.ipynb version
+
+
 
 
 
