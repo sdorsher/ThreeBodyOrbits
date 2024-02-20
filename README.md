@@ -30,6 +30,19 @@ Two Stars One Planet.ipynb
 
 has a nice plot of the three body orbit, where the center two stars spiral about the slighly offset center of mass and the outer planet travels roughly in an ellipse but seems to spiral somewhat
 
+If you would like to see my older code consider taking a look at 
+
+Vector Approach Elliptical Orbits RK4.ipynb
+and its product
+EllipseSymmetry.png
+
+as well as
+
+Gorgeous circular orbit March 6 RK4 Vector.png
+
+Which is really not very impressive because its just a circle and its just a png but it is solid evidence it works that definitely should display on your computer
+
+
 So what else is here?
 
 I began by writing the code simplistically with just two stars and no generalization using the most basic RK4. I tested circles, unequal masses, ellipses, hyperbolas. I checked the numerical convergence of my code. I explored recovery of initial parameters (a couple percent) using fits to the ellipse. I confirmed symmetry and minima and maxima. These routines seem to work but unfortunately I left many of the parameters set oddly when I moved on. 
