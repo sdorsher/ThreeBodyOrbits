@@ -1,8 +1,10 @@
 # KeplerianOrbits
 
+By Steven Dorsher
+
 Acknowledgments:
 
-Steven R Brandt gave me the idea to work on this project. We discussed ideas and there were issues that his insights helped solve, as well as questions he raised that I addressed. In particular, he pointed out that conserved quantities were of interest, and we discussed the interpretation of the convergence plots that verified the working of the code as well as the transfer of energy. This was ultimately my project, but Steve provided the inspiration, the , the occasional technical help, and the encouragement to keep going. Thanks so much to him!!!
+Steven R Brandt gave me the idea to work on this project. We discussed ideas and there were issues that his insights helped solve, as well as questions he raised that I addressed. In particular, he pointed out that conserved quantities were of interest, and we discussed the interpretation of the convergence plots that verified the working of the code as well as the transfer of energy. This was ultimately my project and I was the author of the code, but Steve provided the inspiration, the knowledgeable back and forth, the occasional technical help, and the encouragement to keep going. Thanks so much to him!!!
 
 -----------------------------
 ABOUT THIS PROJECT AND THE CODE I HAVE WRITTEN:
